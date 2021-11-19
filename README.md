@@ -6,3 +6,7 @@
 $ rustc <filename>
 $ <filename>.exe
 ```
+
+```bash
+$ cargo install cargo-edit
+```

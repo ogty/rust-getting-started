@@ -58,8 +58,3 @@ fn type_of<T>(_: T) -> String {
     let data = std::any::type_name::<T>();
     return data.to_string();
 }
-
-fn enum_of<T>(_: T) -> String {
-    let data = std::fmt::Display::<T>();
-    return data.to_string();
-}

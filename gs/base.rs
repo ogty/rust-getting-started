@@ -52,6 +52,16 @@ fn main() {
     println!("name: {}\nage: {}", p.name, p.age);
     // name: John
     // age: 8
+
+
+    // Option
+    let x: Option<u32> = Some(2);
+    assert_eq!(x.is_some(), true);
+    println!("{:?}", x); // Some(2)
+    
+    let x: Option<u32> = None;
+    assert_eq!(x.is_some(), false);
+    println!("{:?}", x); // None
 }
 
 fn type_of<T>(_: T) -> String {

@@ -46,7 +46,7 @@ fn main() {
     }
 
     let p = Person {
-        name: String::from("John"),
+        name: String::from("John"), // "John".to_string()
         age: 8,
     };
     println!("name: {}\nage: {}", p.name, p.age);

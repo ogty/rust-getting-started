@@ -1,4 +1,4 @@
-# RUST Getting Started
+# R Getting Started
 
 [Downloads](https://www.rust-lang.org/ja/tools/install)
 

@@ -6,8 +6,3 @@ Cargo.lock
 **/*.rs.bk
 
 *.pdb
-
-
-*.bat
-*.sh
-compiled/

@@ -2,6 +2,7 @@ mod types;
 mod flow;
 mod overload;
 mod string_manipulation;
+mod guessing_game;
 
 fn main() {
     // types
@@ -16,4 +17,6 @@ fn main() {
 
     // string manipulation
     string_manipulation::string_manipulation();
+
+    guessing_game::main();
 }

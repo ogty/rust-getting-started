@@ -1,7 +1,7 @@
 pub fn types() {
     // int
     let inum = 100;
-    let fnum = 3.14;
+    let fnum = 1.1;
     type_of(inum);
     type_of(fnum);
 
@@ -30,5 +30,5 @@ pub fn types() {
 
 fn type_of<T>(_: T) {
     let data = std::any::type_name::<T>();
-    println!("{}", data.to_string());
+    println!("{}", data);
 }

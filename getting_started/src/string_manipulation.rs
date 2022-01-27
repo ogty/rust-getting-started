@@ -13,4 +13,5 @@ pub fn string_manipulation() {
     hello_rust.retain(|c| c != '!');
     println!("{}", hello_world);
     println!("{}", hello_rust);
+    // TODO: pop, remove, push_str
 }

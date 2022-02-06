@@ -3,15 +3,19 @@ use core::cmp::Ordering::Equal;
 use scraper;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let body = reqwest::blocking::get("https://finance.yahoo.co.jp/stocks/ranking/up/")?.text()?;
-    let document = scraper::Html::parse_document(&body);
-    let selector = scraper::Selector::parse("span._1QEp9BsV").unwrap();
-    let elements = document.select(&selector);
+    for page_num in 1..3 {
+        let url = format!("https://finance.yahoo.co.jp/stocks/ranking/up?page={}", page_num);
+        let body = reqwest::blocking::get(url)?.text()?;
+        let document = scraper::Html::parse_document(&body);
+        let selector = scraper::Selector::parse("span._1QEp9BsV").unwrap();
+        let elements = document.select(&selector);
 
-    let mut rates = Vec::new();
-    elements.for_each(|e| rates.push(e.text().next().unwrap().parse::<f32>().unwrap()));
+        let mut rates = Vec::new();
+        elements.for_each(|e| rates.push(e.text().next().unwrap().parse::<f32>().unwrap()));
 
-    println!("{}", median(&mut rates));
+        println!("{}", median(&mut rates));
+    }
+    // println!("{}", median(&mut rates));
     Ok(())
 }
 

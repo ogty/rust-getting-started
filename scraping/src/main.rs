@@ -18,5 +18,5 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 fn median(numbers: &mut [f32]) -> f32 {
     numbers.sort_by(|a, b| a.partial_cmp(b).unwrap_or(Equal));
     let mid = numbers.len() / 2;
-    numbers[mid]
+    return numbers[mid];
 }

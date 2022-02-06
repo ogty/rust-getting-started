@@ -7,7 +7,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let elements = document.select(&selector);
 
     let mut rates = Vec::new();
-    elements.for_each(|e| rates.push(e.text().next().unwrap()));
+    elements.for_each(|e| rates.push(e.text().next().unwrap().parse::<f32>().unwrap()));
 
+    println!("{:?}", rates);
     Ok(())
 }

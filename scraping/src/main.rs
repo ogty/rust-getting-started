@@ -3,6 +3,7 @@ use core::cmp::Ordering::Equal;
 use scraper;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // TODO: summarize the data
     for page_num in 1..3 {
         let url = format!("https://finance.yahoo.co.jp/stocks/ranking/up?page={}", page_num);
         let body = reqwest::blocking::get(url)?.text()?;
@@ -15,7 +16,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         println!("{}", median(&mut rates));
     }
-    // println!("{}", median(&mut rates));
     Ok(())
 }
 

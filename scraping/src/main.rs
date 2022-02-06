@@ -1,12 +1,13 @@
 use scraper;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let body = reqwest::blocking::get("https://github.com/ogty/uiux/")?.text()?;
+    let body = reqwest::blocking::get("https://finance.yahoo.co.jp/stocks/ranking/up/")?.text()?;
     let document = scraper::Html::parse_document(&body);
-    
-    let selector = scraper::Selector::parse("li").unwrap();
+    let selector = scraper::Selector::parse("span._1QEp9BsV").unwrap();
     let elements = document.select(&selector);
-    elements.for_each(|e| println!("{}", e.text().next().unwrap()));
+
+    let mut rates = Vec::new();
+    elements.for_each(|e| rates.push(e.text().next().unwrap()));
 
     Ok(())
 }

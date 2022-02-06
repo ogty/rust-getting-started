@@ -2,7 +2,7 @@ mod types;
 mod flow;
 mod overload;
 mod string_manipulation;
-mod guessing_game;
+mod basic_stats;
 
 fn main() {
     // types
@@ -18,5 +18,9 @@ fn main() {
     // string manipulation
     string_manipulation::string_manipulation();
 
-    guessing_game::main();
+    // basic statistics 
+    let mut numbers = [42, 1, 36, 34, 76, 378, 43, 1, 43, 54, 2, 3, 43];
+    println!("{}", basic_stats::average(&numbers));
+    println!("{}", basic_stats::median(&mut numbers));
+    println!("{}", basic_stats::mode(&numbers));
 }

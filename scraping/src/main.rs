@@ -1,3 +1,5 @@
+use core::cmp::Ordering::Equal;
+
 use scraper;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -9,6 +11,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut rates = Vec::new();
     elements.for_each(|e| rates.push(e.text().next().unwrap().parse::<f32>().unwrap()));
 
-    println!("{:?}", rates);
+    println!("{}", median(&mut rates));
     Ok(())
+}
+
+fn median(numbers: &mut [f32]) -> f32 {
+    numbers.sort_by(|a, b| a.partial_cmp(b).unwrap_or(Equal));
+    let mid = numbers.len() / 2;
+    numbers[mid]
 }

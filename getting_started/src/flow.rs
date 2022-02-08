@@ -1,6 +1,5 @@
 pub fn flow() {
     let age = 20;
-
     if age > 76 {
         println!("Old age");
     } else if age > 45 {
@@ -11,5 +10,29 @@ pub fn flow() {
         println!("Boy");
     } else {
         println!("Childhood");
+    }
+
+    let os = "Windows".to_string();
+    let split_word = if os == "Windows" { "\\" } else { "/" };
+    println!("{}", split_word);
+
+    let mut count = 0;
+    let result = loop {
+        count += 1;
+        if count == 5 {
+            break count
+        }
+    };
+    println!("{}", result);
+
+    let mut num = 3;
+    while num == 0 {
+        println!("{}", num);
+        num -= 1;
+    };
+
+    let array = [1, 2, 3, 4, 5];
+    for i in array.iter() {
+        println!("{}", i);
     }
 }

@@ -1,5 +1,5 @@
 pub fn string_manipulation() {
-    let maxim = String::from("Dont't Repeat Yourself");
+    let maxim = String::from("Don't Repeat Yourself");
     let mut maxim_abb = String::new();
 
     for word in maxim.split_whitespace() {

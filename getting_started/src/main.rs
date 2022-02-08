@@ -3,6 +3,7 @@ mod flow;
 mod overload;
 mod string_manipulation;
 mod basic_stats;
+mod structure;
 
 fn main() {
     // types
@@ -23,4 +24,7 @@ fn main() {
     println!("{}", basic_stats::average(&numbers));
     println!("{}", basic_stats::median(&mut numbers));
     println!("{}", basic_stats::mode(&numbers));
+
+    // structure
+    structure::main();
 }

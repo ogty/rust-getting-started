@@ -12,8 +12,7 @@ pub fn flow() {
         println!("Childhood");
     }
 
-    let os = "Windows".to_string();
-    let split_word = if os == "Windows" { "\\" } else { "/" };
+    let split_word = if cfg!(target_os = "windows") { "\\" } else { "/" };
     println!("{}", split_word);
 
     let mut count = 0;

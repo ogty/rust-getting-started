@@ -1,12 +1,12 @@
 use std::fmt;
 
 struct Url {
-    scheme: String,
+    _scheme: String,
     netloc: String,
-    path: String,
-    params: String,
-    query: String,
-    fragment: String
+    _path: String,
+    _params: String,
+    _query: String,
+    _fragment: String
 }
 
 struct Position(f32, f32, f32);
@@ -39,12 +39,12 @@ impl MyCalc {
 pub fn main() {
     // "https://example.com/items?page=3&sort=popular"
     let url = Url {
-        scheme: "https".to_string(),
+        _scheme: "https".to_string(),
         netloc: "example.com".to_string(),
-        path: "items".to_string(),
-        params: "".to_string(),
-        query: "page=3&sort=popular".to_string(),
-        fragment: "".to_string()
+        _path: "items".to_string(),
+        _params: "".to_string(),
+        _query: "page=3&sort=popular".to_string(),
+        _fragment: "".to_string()
     };
     println!("{}", url.netloc);
 

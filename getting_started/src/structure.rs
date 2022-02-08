@@ -42,8 +42,8 @@ pub fn main() {
         scheme: "https".to_string(),
         netloc: "example.com".to_string(),
         path: "items".to_string(),
-        params: "page=3&sort=popular".to_string(),
-        query: "".to_string(),
+        params: "".to_string(),
+        query: "page=3&sort=popular".to_string(),
         fragment: "".to_string()
     };
     println!("{}", url.netloc);

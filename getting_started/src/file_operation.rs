@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::io::{self, BufRead};
 use std::path::Path;
-
+use csv::Error;
 
 pub fn read(path: String) -> String {
     let path = Path::new(&path);
@@ -12,6 +12,8 @@ pub fn read(path: String) -> String {
         Err(why) => panic!("couldn't open {}: {}", display, why),
         Ok(file) => file,
     };
+
+    println!("{:?}", file);
 
     let mut s = String::new();
     match file.read_to_string(&mut s) {
@@ -50,4 +52,31 @@ pub fn read_lines(path: String) -> Vec<String> {
         }
     }
     return result;
+}
+
+pub fn main(path: String) -> Result<(), Error> {
+    let path = Path::new(&path);
+    let display = path.display();
+
+    let mut file = match File::open(&path) {
+        Err(why) => panic!("couldn't open {}: {}", display, why),
+        Ok(file) => file,
+    };
+
+    let mut s = String::new();
+    match file.read_to_string(&mut s) {
+        Err(why) => panic!("couldn't read {}: {}", display, why),
+        Ok(_) => tmp(s),
+    }
+}
+
+fn tmp(data: String) -> Result<(), Error> {
+    let mut code = Vec::new();
+    let mut reader = csv::Reader::from_reader(data.as_bytes());
+    for record in reader.records() {
+        let record = record?;
+        code.push(format!("{}", &record[0]));
+    }
+    println!("{:?}", code);
+    Ok(())
 }

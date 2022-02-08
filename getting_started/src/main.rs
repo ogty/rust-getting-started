@@ -39,7 +39,8 @@ fn main() {
     file_operation::write("./data/maxim.txt".to_string(), MAXIM);
     let file_contents_array = file_operation::read_lines("./data/maxim.txt".to_string());
     println!("{:?}", file_contents_array[0]);
-    file_operation::main("./data/stock.csv".to_string());
+    let df = file_operation::read_csv("./data/stock.csv".to_string(), 6);
+    println!("{:?}", df);
 }
 
 static MAXIM: &str =

@@ -2,9 +2,12 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::io::{self, BufRead};
 use std::path::Path;
+use std::collections::HashMap;
 use csv::Error;
 
 pub fn read(path: String) -> String {
+    // let path_splited: Vec<&str> = path.split('.').collect();
+    // let extension = format!("{:?}", path_splited.last());
     let path = Path::new(&path);
     let display = path.display();
 
@@ -13,12 +16,10 @@ pub fn read(path: String) -> String {
         Ok(file) => file,
     };
 
-    println!("{:?}", file);
-
     let mut s = String::new();
     match file.read_to_string(&mut s) {
         Err(why) => panic!("couldn't read {}: {}", display, why),
-        Ok(_) => s,
+        Ok(_) => s
     }
 }
 
@@ -54,7 +55,7 @@ pub fn read_lines(path: String) -> Vec<String> {
     return result;
 }
 
-pub fn main(path: String) -> Result<(), Error> {
+pub fn read_csv(path: String, column_length: i32) -> Result<HashMap<usize, Vec<String>>, Error> {
     let path = Path::new(&path);
     let display = path.display();
 
@@ -66,17 +67,25 @@ pub fn main(path: String) -> Result<(), Error> {
     let mut s = String::new();
     match file.read_to_string(&mut s) {
         Err(why) => panic!("couldn't read {}: {}", display, why),
-        Ok(_) => tmp(s),
+        Ok(_) => tmp(s, column_length),
     }
 }
 
-fn tmp(data: String) -> Result<(), Error> {
-    let mut code = Vec::new();
+fn tmp(data: String, column_length: i32) -> Result<HashMap<usize, Vec<String>>, Error> {
+    let mut result = HashMap::new();
+    let rows = data.match_indices("\n").count();
     let mut reader = csv::Reader::from_reader(data.as_bytes());
+
     for record in reader.records() {
         let record = record?;
-        code.push(format!("{}", &record[0]));
+        for row in 0..rows {
+            let mut tmp = Vec::new();
+            for i in 0..column_length {
+                tmp.push(format!("{}", &record[i.try_into().unwrap()]));
+            }
+            result.insert(row, tmp);
+        }
     }
-    println!("{:?}", code);
-    Ok(())
+
+    Ok(result)
 }

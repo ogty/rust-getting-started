@@ -5,6 +5,7 @@ mod string_manipulation;
 mod basic_stats;
 mod structure;
 mod enumerated;
+mod file_operation;
 
 fn main() {
     // types
@@ -31,4 +32,18 @@ fn main() {
 
     // enum
     enumerated::main();
+
+    // read, write, read lines
+    let hello = file_operation::read("./data/hello.txt".to_string());
+    println!("{}", hello);
+    file_operation::write("./data/maxim.txt".to_string(), MAXIM);
+    let file_contents_array = file_operation::read_lines("./data/maxim.txt".to_string());
+    println!("{:?}", file_contents_array[0]);
 }
+
+static MAXIM: &str =
+    "KISS: Keep It Simple, Stupid
+DRY: Don't Repeat Yourself
+YAGNI: You Aren't Going to Need It
+SLAP: Single Level of Abstraction Principle
+OCP: Open-Closed Principle";

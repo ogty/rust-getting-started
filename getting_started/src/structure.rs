@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::fmt;
 
 struct Url {
@@ -35,7 +36,24 @@ impl MyCalc {
         let mid = self.data.len() / 2;
         self.data[mid]
     }
+
+    #[allow(dead_code)]
+    fn mode(&self) -> i32 {
+        let mut occurrences = HashMap::new();
+    
+        for &value in &self.data {
+            *occurrences.entry(value).or_insert(0) += 1;
+        }
+    
+        occurrences
+            .into_iter()
+            .max_by_key(|&(_, count)| count)
+            .map(|(val, _)| val)
+            .expect("Cannot compute the mode of zero numbers")
+    }
+    
 }
+
 pub fn main() {
     // "https://example.com/items?page=3&sort=popular"
     let url = Url {

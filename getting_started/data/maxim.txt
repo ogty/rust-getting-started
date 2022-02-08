@@ -1,0 +1,5 @@
+KISS: Keep It Simple, Stupid
+DRY: Don't Repeat Yourself
+YAGNI: You Aren't Going to Need It
+SLAP: Single Level of Abstraction Principle
+OCP: Open-Closed Principle

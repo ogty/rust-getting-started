@@ -65,11 +65,11 @@ pub fn read_csv(path: String, column_length: i32) -> Result<HashMap<usize, Vec<S
     let mut s = String::new();
     match file.read_to_string(&mut s) {
         Err(why) => panic!("couldn't read {}: {}", display, why),
-        Ok(_) => tmp(s, column_length),
+        Ok(_) => read_csv_inner_process(s, column_length),
     }
 }
 
-fn tmp(data: String, column_length: i32) -> Result<HashMap<usize, Vec<String>>, Error> {
+fn read_csv_inner_process(data: String, column_length: i32) -> Result<HashMap<usize, Vec<String>>, Error> {
     let mut result = HashMap::new();
     let rows = data.match_indices("\n").count();
     let mut reader = csv::Reader::from_reader(data.as_bytes());

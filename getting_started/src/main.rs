@@ -4,6 +4,7 @@ mod overload;
 mod string_manipulation;
 mod basic_stats;
 mod structure;
+mod enumerated;
 
 fn main() {
     // types
@@ -27,4 +28,7 @@ fn main() {
 
     // structure
     structure::main();
+
+    // enum
+    enumerated::main();
 }

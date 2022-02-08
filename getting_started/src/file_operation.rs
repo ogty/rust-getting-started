@@ -1,13 +1,11 @@
+use csv::Error;
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::prelude::*;
 use std::io::{self, BufRead};
 use std::path::Path;
-use std::collections::HashMap;
-use csv::Error;
 
 pub fn read(path: String) -> String {
-    // let path_splited: Vec<&str> = path.split('.').collect();
-    // let extension = format!("{:?}", path_splited.last());
     let path = Path::new(&path);
     let display = path.display();
 

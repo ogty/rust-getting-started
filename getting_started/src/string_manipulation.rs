@@ -20,4 +20,9 @@ pub fn string_manipulation() {
 
     let rate = String::from("+25.8");
     println!("{}", rate.parse::<f32>().unwrap());
+
+    let path = "~/Desktop/project1/main.py";
+    let path_splited: Vec<&str> = path.split('.').collect();
+    let extension = format!("{:?}", path_splited.last());
+    println!("{}", extension);
 }

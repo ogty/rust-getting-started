@@ -1,3 +1,5 @@
+use std::vec;
+
 mod types;
 mod flow;
 mod overload;
@@ -6,6 +8,7 @@ mod basic_stats;
 mod structure;
 mod enumerated;
 mod file_operation;
+mod plot;
 
 fn main() {
     // types
@@ -43,6 +46,11 @@ fn main() {
 
     let df = file_operation::read_csv("./data/stock.csv".to_string(), 6);
     println!("{:?}", df);
+
+    // plottin
+    let data = vec![0u32, 1, 1, 1, 4, 2, 5, 7, 8, 6, 4, 2, 1, 8, 3, 3, 3, 4, 4, 3, 3, 3];
+    let result = plot::main(data);
+    println!("{:?}", result);
 }
 
 static MAXIM: &str =

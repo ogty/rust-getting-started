@@ -36,9 +36,11 @@ fn main() {
     // read, write, read lines
     let hello = file_operation::read("./data/hello.txt".to_string());
     println!("{}", hello);
+    
     file_operation::write("./data/maxim.txt".to_string(), MAXIM);
     let file_contents_array = file_operation::read_lines("./data/maxim.txt".to_string());
     println!("{:?}", file_contents_array[0]);
+
     let df = file_operation::read_csv("./data/stock.csv".to_string(), 6);
     println!("{:?}", df);
 }

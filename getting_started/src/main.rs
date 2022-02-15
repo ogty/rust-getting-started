@@ -9,6 +9,7 @@ mod structure;
 mod enumerated;
 mod file_operation;
 mod plot;
+mod schedule_generator;
 
 fn main() {
     // types
@@ -51,6 +52,9 @@ fn main() {
     let data = vec![0u32, 1, 1, 1, 4, 2, 5, 7, 8, 6, 4, 2, 1, 8, 3, 3, 3, 4, 4, 3, 3, 3];
     let result = plot::main(data);
     println!("{:?}", result);
+
+    // schedule generator
+    schedule_generator::main();
 }
 
 static MAXIM: &str =

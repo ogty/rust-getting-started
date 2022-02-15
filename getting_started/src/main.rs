@@ -10,6 +10,7 @@ mod enumerated;
 mod file_operation;
 mod plot;
 mod schedule_generator;
+use crate::schedule_generator::Components;
 
 fn main() {
     // types
@@ -54,7 +55,11 @@ fn main() {
     println!("{:?}", result);
 
     // schedule generator
-    schedule_generator::main();
+    let hours = (9..18).collect::<Vec<i32>>();
+    let mut generator = schedule_generator::ScheduleGenerator{hours, ..Default::default()};
+    generator.generate();
+    generator.addition(vec!["07:00".to_string(), "08:00".to_string()]);
+    println!("{:?}", generator.time_schedules);
 }
 
 static MAXIM: &str =

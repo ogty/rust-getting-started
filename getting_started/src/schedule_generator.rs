@@ -1,15 +1,23 @@
-struct ScheduleGenerator {
-    hours: Vec<i32>,
-    step: usize,
-    fill: bool,
-    include: bool,
-    delimiter: String,
+pub trait Components {
+    fn generate(&mut self);
+    fn delete(&mut self, del_schedules: Vec<String>);
+    fn addition(&mut self, add_schedules: Vec<String>);
+}
+
+pub struct ScheduleGenerator {
+    pub hours: Vec<i32>,
+    pub time_schedules: Vec<String>,
+    pub step: usize,
+    pub fill: bool,
+    pub include: bool,
+    pub delimiter: String,
 }
 
 impl Default for ScheduleGenerator {
     fn default() -> ScheduleGenerator {
         ScheduleGenerator {
-            hours: vec![],
+            hours: Vec::new(),
+            time_schedules: Vec::new(), 
             step: 30,
             fill: true,
             include: true,
@@ -18,8 +26,8 @@ impl Default for ScheduleGenerator {
     }
 }
 
-impl Component for ScheduleGenerator {
-    fn generate(&mut self) -> Vec<String> {
+impl Components for ScheduleGenerator {
+    fn generate(&mut self) {
         let mut time_schedules = Vec::new();
         for hour in &self.hours {
             for minute in (0..60).step_by(self.step) {
@@ -46,23 +54,26 @@ impl Component for ScheduleGenerator {
                 }
             }
         }
-        return time_schedules
+        self.time_schedules = time_schedules;
     }
 
-    fn delete(&mut self) {}
-    fn addition(&mut self) {}
-    fn reorder(&mut self) {}
-}
-trait Component {
-    fn generate(&mut self) -> Vec<String>;
-    fn delete(&mut self);
-    fn addition(&mut self);
-    fn reorder(&mut self);
-}
+    fn delete(&mut self, del_schedules: Vec<String>){
+        let mut tmp = Vec::new();
 
-pub fn main() {
-    let hours = (9..18).collect::<Vec<i32>>();
-    let mut generator = ScheduleGenerator{hours, ..Default::default()};
-    let result = &generator.generate();
-    println!("{:?}", result);
+        for time_schedule in &self.time_schedules {
+            tmp.push(format!("{}", time_schedule));
+        }
+
+        for del_schedule in del_schedules {
+            let index = tmp.iter().position(|x| *x == del_schedule).unwrap();
+            tmp.remove(index);
+        }
+        self.time_schedules = Vec::new();
+        self.time_schedules = tmp;
+    }
+    fn addition(&mut self, add_schdules: Vec<String>) {
+        for add_schdule in add_schdules {
+            self.time_schedules.push(add_schdule);
+        }
+    }
 }

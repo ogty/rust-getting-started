@@ -1,10 +1,12 @@
 pub trait Components {
     fn generate(&mut self);
     fn delete(&mut self, del_schedules: Vec<String>);
-    fn addition(&mut self, add_schedules: Vec<String>);
+    fn addition(&mut self, add_schedules: Vec<&str>);
 }
 
 pub struct ScheduleGenerator {
+    pub start: i32,
+    pub end: i32,
     pub hours: Vec<i32>,
     pub time_schedules: Vec<String>,
     pub step: usize,
@@ -16,6 +18,8 @@ pub struct ScheduleGenerator {
 impl Default for ScheduleGenerator {
     fn default() -> ScheduleGenerator {
         ScheduleGenerator {
+            start: 0,
+            end: 23,
             hours: Vec::new(),
             time_schedules: Vec::new(), 
             step: 30,
@@ -28,6 +32,9 @@ impl Default for ScheduleGenerator {
 
 impl Components for ScheduleGenerator {
     fn generate(&mut self) {
+        let hours = (self.start..self.end).collect::<Vec<i32>>();
+        self.hours = hours;
+
         let mut time_schedules = Vec::new();
         for hour in &self.hours {
             for minute in (0..60).step_by(self.step) {
@@ -71,9 +78,9 @@ impl Components for ScheduleGenerator {
         self.time_schedules = Vec::new();
         self.time_schedules = tmp;
     }
-    fn addition(&mut self, add_schdules: Vec<String>) {
+    fn addition(&mut self, add_schdules: Vec<&str>) {
         for add_schdule in add_schdules {
-            self.time_schedules.push(add_schdule);
+            self.time_schedules.push(add_schdule.to_string());
         }
     }
 }

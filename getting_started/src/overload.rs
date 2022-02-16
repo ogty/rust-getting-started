@@ -40,6 +40,6 @@ pub fn abb<T>(data:T) -> String where AbbImpl:Abb<T> {
     ];
     let month_num = (1..13).collect::<Vec<i32>>();
 
-    let mut abb = AbbImpl{month_word, month_num};
+    let mut abb = AbbImpl{ month_word, month_num };
     return Abb::abb(&mut abb, data);
 }

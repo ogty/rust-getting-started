@@ -55,10 +55,11 @@ fn main() {
     println!("{:?}", result);
 
     // schedule generator
-    let hours = (9..18).collect::<Vec<i32>>();
-    let mut generator = schedule_generator::ScheduleGenerator{hours, ..Default::default()};
+    let mut generator = ScheduleGenerator{ start: 9, end: 18, ..Default::default() };
     generator.generate();
-    generator.addition(vec!["07:00".to_string(), "08:00".to_string()]);
+    println!("{:?}", generator.time_schedules);
+    
+    generator.addition(vec!["07:00", "08:00"]);
     println!("{:?}", generator.time_schedules);
 }
 

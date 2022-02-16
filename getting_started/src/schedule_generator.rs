@@ -31,7 +31,7 @@ impl Components for ScheduleGenerator {
         let mut time_schedules = Vec::new();
         for hour in &self.hours {
             for minute in (0..60).step_by(self.step) {
-                if self.fill{
+                if self.fill {
                     time_schedules.push(format!("{}{}{}", format!("{:0>2}", hour), self.delimiter, format!("{:0>2}", minute)));
                 } else {
                     time_schedules.push(format!("{}{}{}", hour, self.delimiter, minute));
@@ -57,7 +57,7 @@ impl Components for ScheduleGenerator {
         self.time_schedules = time_schedules;
     }
 
-    fn delete(&mut self, del_schedules: Vec<String>){
+    fn delete(&mut self, del_schedules: Vec<String>) {
         let mut tmp = Vec::new();
 
         for time_schedule in &self.time_schedules {

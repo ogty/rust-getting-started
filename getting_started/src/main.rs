@@ -21,7 +21,7 @@ fn main() {
     
     // overload
     overload::abb(10);
-    overload::abb(String::from("Feb"));
+    overload::abb("Feb");
 
     // string manipulation
     string_manipulation::string_manipulation();

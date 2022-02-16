@@ -39,14 +39,14 @@ fn main() {
     enumerated::main();
 
     // read, write, read lines
-    let hello = file_operation::read("./data/hello.txt".to_string());
+    let hello = file_operation::read("./data/hello.txt");
     println!("{}", hello);
     
-    file_operation::write("./data/maxim.txt".to_string(), MAXIM);
-    let file_contents_array = file_operation::read_lines("./data/maxim.txt".to_string());
+    file_operation::write("./data/maxim.txt", MAXIM);
+    let file_contents_array = file_operation::read_lines("./data/maxim.txt");
     println!("{:?}", file_contents_array[0]);
 
-    let df = file_operation::read_csv("./data/stock.csv".to_string(), 6);
+    let df = file_operation::read_csv("./data/stock.csv", 6);
     println!("{:?}", df);
 
     // plotting
@@ -55,7 +55,7 @@ fn main() {
     println!("{:?}", result);
 
     // schedule generator
-    let mut generator = ScheduleGenerator{ start: 9, end: 18, ..Default::default() };
+    let mut generator = schedule_generator::ScheduleGenerator{ start: 9, end: 18, ..Default::default() };
     generator.generate();
     println!("{:?}", generator.time_schedules);
     

@@ -5,7 +5,7 @@ use std::io::prelude::*;
 use std::io::{self, BufRead};
 use std::path::Path;
 
-pub fn read(path: String) -> String {
+pub fn read(path: &str) -> String {
     let path = Path::new(&path);
     let display = path.display();
 
@@ -21,7 +21,7 @@ pub fn read(path: String) -> String {
     }
 }
 
-pub fn write(path: String, content: &str) {
+pub fn write(path: &str, content: &str) {
     let path = Path::new(&path);
     let display = path.display();
 
@@ -41,7 +41,7 @@ fn read_lines_inner_process<P>(filename: P) -> io::Result<io::Lines<io::BufReade
     Ok(io::BufReader::new(file).lines())
 }
 
-pub fn read_lines(path: String) -> Vec<String> {
+pub fn read_lines(path: &str) -> Vec<String> {
     let mut result = Vec::new();
     if let Ok(lines) = read_lines_inner_process(path) {
         for line in lines {
@@ -53,7 +53,7 @@ pub fn read_lines(path: String) -> Vec<String> {
     return result;
 }
 
-pub fn read_csv(path: String, column_length: i32) -> Result<HashMap<usize, Vec<String>>, Error> {
+pub fn read_csv(path: &str, column_length: i32) -> Result<HashMap<usize, Vec<String>>, Error> {
     let path = Path::new(&path);
     let display = path.display();
 

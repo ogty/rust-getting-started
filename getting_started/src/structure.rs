@@ -51,7 +51,6 @@ impl MyCalc {
             .map(|(val, _)| val)
             .expect("Cannot compute the mode of zero numbers")
     }
-    
 }
 
 pub fn main() {
@@ -64,6 +63,7 @@ pub fn main() {
         _query: "page=3&sort=popular".to_string(),
         _fragment: "".to_string()
     };
+
     println!("{}", url.netloc);
 
     let Position (x, y, z) = Position(-199.036, 75.0000, -2376.8457);

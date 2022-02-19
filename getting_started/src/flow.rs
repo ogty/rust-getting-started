@@ -1,5 +1,6 @@
 pub fn flow() {
     let age = 20;
+    
     if age > 76 {
         println!("Old age");
     } else if age > 45 {

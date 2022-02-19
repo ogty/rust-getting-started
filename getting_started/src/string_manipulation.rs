@@ -9,7 +9,6 @@ pub fn string_manipulation() {
     println!("{}", maxim_abb);
     println!("{}", maxim_abb.len());
 
-
     let hello_world = String::from("Hello World!");
     let mut hello_rust = hello_world.replace("World", "Rust");
     

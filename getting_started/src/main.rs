@@ -21,7 +21,7 @@ fn main() {
     
     // overload
     overload::abb(10);
-    overload::abb(String::from("Feb"));
+    overload::abb("Feb");
 
     // string manipulation
     string_manipulation::string_manipulation();
@@ -39,14 +39,14 @@ fn main() {
     enumerated::main();
 
     // read, write, read lines
-    let hello = file_operation::read("./data/hello.txt".to_string());
+    let hello = file_operation::read("./data/hello.txt");
     println!("{}", hello);
     
-    file_operation::write("./data/maxim.txt".to_string(), MAXIM);
-    let file_contents_array = file_operation::read_lines("./data/maxim.txt".to_string());
+    file_operation::write("./data/maxim.txt", MAXIM);
+    let file_contents_array = file_operation::read_lines("./data/maxim.txt");
     println!("{:?}", file_contents_array[0]);
 
-    let df = file_operation::read_csv("./data/stock.csv".to_string(), 6);
+    let df = file_operation::read_csv("./data/stock.csv", 6);
     println!("{:?}", df);
 
     // plotting
@@ -55,10 +55,11 @@ fn main() {
     println!("{:?}", result);
 
     // schedule generator
-    let hours = (9..18).collect::<Vec<i32>>();
-    let mut generator = schedule_generator::ScheduleGenerator{hours, ..Default::default()};
+    let mut generator = schedule_generator::ScheduleGenerator{ start: 9, end: 18, ..Default::default() };
     generator.generate();
-    generator.addition(vec!["07:00".to_string(), "08:00".to_string()]);
+    println!("{:?}", generator.time_schedules);
+    
+    generator.addition(vec!["07:00", "08:00"]);
     println!("{:?}", generator.time_schedules);
 }
 

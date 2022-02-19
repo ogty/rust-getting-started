@@ -1,6 +1,6 @@
 use plotters::prelude::*;
 
-const OUT_FILE_NAME: &'static str = "./data/histogram.png";
+const OUT_FILE_NAME: &'static str = "./data/images/histogram.png";
 
 pub fn main(data: Vec<u32>) -> Result<(), Box<dyn std::error::Error>> {
     let root = BitMapBackend::new(OUT_FILE_NAME, (640, 480)).into_drawing_area();

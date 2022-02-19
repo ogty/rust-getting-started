@@ -20,8 +20,8 @@ fn main() {
     flow::flow();
     
     // overload
-    overload::abb(10);
-    overload::abb("Feb");
+    println!("{}", overload::abb(10));
+    println!("{}", overload::abb("Feb"));
 
     // string manipulation
     string_manipulation::string_manipulation();

@@ -39,7 +39,8 @@ impl Components for ScheduleGenerator {
         for hour in &self.hours {
             for minute in (0..60).step_by(self.step) {
                 if self.fill {
-                    time_schedules.push(format!("{}{}{}", format!("{:0>2}", hour), self.delimiter, format!("{:0>2}", minute)));
+                    time_schedules.push(
+                        format!("{:0>2}{}{:0>2}", hour, self.delimiter, minute));
                 } else {
                     time_schedules.push(format!("{}{}{}", hour, self.delimiter, minute));
                 }
@@ -47,13 +48,8 @@ impl Components for ScheduleGenerator {
         }
 
         if self.include {
-            let mut hours_end = &0;
-            match &self.hours.last() {
-                Some(v) => hours_end = v,
-                None => (),
-            };
-            
-            if hours_end != &23 {
+            let hours_end = self.hours[self.hours.len() - 1];
+            if hours_end != 23 {
                 if self.fill {
                     time_schedules.push(format!("{:?}{}00", hours_end + 1, self.delimiter));
                 } else {
@@ -61,6 +57,7 @@ impl Components for ScheduleGenerator {
                 }
             }
         }
+
         self.time_schedules = time_schedules;
     }
 
@@ -78,6 +75,7 @@ impl Components for ScheduleGenerator {
         self.time_schedules = Vec::new();
         self.time_schedules = tmp;
     }
+
     fn addition(&mut self, add_schdules: Vec<&str>) {
         for add_schdule in add_schdules {
             self.time_schedules.push(add_schdule.to_string());

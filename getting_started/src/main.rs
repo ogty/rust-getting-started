@@ -11,6 +11,7 @@ mod file_operation;
 mod plot;
 mod schedule_generator;
 use crate::schedule_generator::Components;
+mod run_command;
 
 fn main() {
     // types
@@ -61,6 +62,9 @@ fn main() {
     
     generator.addition(vec!["07:00", "08:00"]);
     println!("{:?}", generator.time_schedules);
+
+    // run command
+    run_command::run();
 }
 
 static MAXIM: &str =

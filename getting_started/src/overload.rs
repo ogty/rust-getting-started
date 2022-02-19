@@ -12,8 +12,7 @@ pub struct AbbImpl {
 impl Abb<i32> for AbbImpl {
     fn abb(&mut self, c:i32) {
         let months: HashMap<_, _> = self.month_num.iter().zip(self.month_word.iter()).collect();
-        let month = months.get(&c);
-        match month {
+        match months.get(&c) {
             Some(v) => println!("{}", v),
             None => println!("error"),
         };
@@ -23,8 +22,7 @@ impl Abb<i32> for AbbImpl {
 impl Abb<String> for AbbImpl {
     fn abb(&mut self, c:String) {
         let months: HashMap<_, _> = self.month_word.iter().zip(self.month_num.iter()).collect();
-        let month = months.get(&c);
-        match month {
+        match months.get(&c) {
             Some(v) => println!("{}", v),
             None => println!("error"),
         };

@@ -64,6 +64,7 @@ impl Initializer for ArticleInitializer {
         }
     }
 }
+
 fn main() {
     let id = Uuid::new_v4();
     let path = format!("./articles/{}.md", id);

@@ -69,7 +69,8 @@ fn main() {
 
     // whoami
     let iam = whoami::whoami();
-    println!("{}", iam);
+    println!("My name is {}", iam); 
+    println!("{}", whoami::desktop());
 }
 
 static MAXIM: &str =

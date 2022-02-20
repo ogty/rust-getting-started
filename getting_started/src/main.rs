@@ -69,8 +69,7 @@ fn main() {
 
     // whoami
     let iam = whoami::whoami();
-    println!("Computer: {}", iam[0]);
-    println!("Username: {}", iam[1]);
+    println!("{}", iam);
 }
 
 static MAXIM: &str =

@@ -47,18 +47,16 @@ impl Application for GUI {
     type Message = Message;
     type Flags = ();
 
-    fn new(_flags: ()) -> (GUI, Command<Self::Message>) {
-        (
-            GUI {
-                last_update: Instant::now(),
-                total_duration: Duration::default(),
-                tick_state: TickState::Stopped,
-                start_stop_button_state: button::State::new(),
-                reset_button_state: button::State::new(),
-            },
-            Command::none(),
-        )
-    }
+    fn new(_flags: ()) -> (GUI, Command<Self::Message>) {(
+        GUI {
+            last_update: Instant::now(),
+            total_duration: Duration::default(),
+            tick_state: TickState::Stopped,
+            start_stop_button_state: button::State::new(),
+            reset_button_state: button::State::new(),
+        },
+        Command::none(),
+    )}
 
     fn title(&self) -> String {
         String::from("STOPWATCH")
@@ -127,6 +125,7 @@ impl Application for GUI {
         let start_stop_button = Button::new(&mut self.start_stop_button_state, start_stop_text)
             .min_width(80)
             .on_press(start_stop_message);
+        
         let reset_button = Button::new(
             &mut self.reset_button_state,
             Text::new("Reset")

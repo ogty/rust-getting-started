@@ -1,6 +1,6 @@
 use std::fs::File;
 use std::io::prelude::*;
-use std::path::Path;
+use std::path::{Path, Display};
 use std::env;
 
 extern crate uuid;
@@ -26,16 +26,16 @@ impl Default for ArticleInitializer {
 
 impl Initializer for ArticleInitializer {
     fn write(&mut self, path: &str) {
-        let path = Path::new(&path);
-        let display = path.display();
-        let mut template = String::from("");
+        let path: &Path = Path::new(&path);
+        let display: Display = path.display();
+        let mut template: String = String::from("");
 
         if self.title != String::from("") {
-            let topics_length = self.topics.len();
+            let topics_length: usize = self.topics.len();
             if topics_length > 0 {
                 if topics_length > 2 {
-                    let before_last = topics_length - 1;
-                    let topics = self.topics[..before_last].join(", ");
+                    let before_last: usize = topics_length - 1;
+                    let topics: String = self.topics[..before_last].join(", ");
                     template = format!(
                         "---\ntitle: {}\nemoji: 🐒\ntype: tech\ntopics: [{}{}]\npublished: false\n---", 
                         self.title, topics, self.topics[before_last]
@@ -53,7 +53,7 @@ impl Initializer for ArticleInitializer {
             template = String::from("---\ntitle: \nemoji: 🐒\ntype: tech\ntopics: []\npublished: false\n---");
         }
     
-        let mut file = match File::create(&path) {
+        let mut file: File = match File::create(&path) {
             Err(why) => panic!("couldn't create {}: {}", display, why),
             Ok(file) => file,
         };
@@ -66,12 +66,12 @@ impl Initializer for ArticleInitializer {
 }
 
 fn main() {
-    let id = Uuid::new_v4();
-    let path = format!("./articles/{}.md", id);
+    let id: Uuid = Uuid::new_v4();
+    let path: String = format!("./articles/{}.md", id);
     let mut args: Vec<String> = env::args().collect();
     args.push(String::from(""));
 
-    let mut initializer = ArticleInitializer{ ..Default::default() };
+    let mut initializer: ArticleInitializer = ArticleInitializer{ ..Default::default() };
     initializer.title = args[1].to_string();
     initializer.topics = (&args[2..]).to_vec();
     initializer.write(&path);

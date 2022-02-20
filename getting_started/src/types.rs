@@ -1,7 +1,7 @@
 pub fn types() {
     // int
-    let inum = 100;
-    let fnum = 1.1;
+    let inum: i32 = 100;
+    let fnum: f64 = 1.1;
     type_of(inum);
     type_of(fnum);
 
@@ -12,7 +12,7 @@ pub fn types() {
     type_of(&s2);
     
     // char
-    let thinking_face = '🤔';
+    let thinking_face: char = '🤔';
     type_of(thinking_face);
     
     // bool
@@ -20,7 +20,7 @@ pub fn types() {
     type_of(t);
 
     // tuple
-    let t = (1, "2");
+    let t: (i32, &str) = (1, "2");
     type_of(t);
 
     // array
@@ -29,6 +29,6 @@ pub fn types() {
 }
 
 fn type_of<T>(_: T) {
-    let data = std::any::type_name::<T>();
+    let data: &str = std::any::type_name::<T>();
     println!("{}", data);
 }

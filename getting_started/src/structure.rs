@@ -33,13 +33,13 @@ impl MyCalc {
 impl MyCalc {
     fn median(&mut self) -> i32 {
         self.data.sort();
-        let mid = self.data.len() / 2;
+        let mid: usize = self.data.len() / 2;
         self.data[mid]
     }
 
     #[allow(dead_code)]
     fn mode(&self) -> i32 {
-        let mut occurrences = HashMap::new();
+        let mut occurrences: HashMap<i32, i32> = HashMap::new();
     
         for &value in &self.data {
             *occurrences.entry(value).or_insert(0) += 1;
@@ -55,7 +55,7 @@ impl MyCalc {
 
 pub fn main() {
     // "https://example.com/items?page=3&sort=popular"
-    let url = Url {
+    let url: Url = Url {
         _scheme: "https".to_string(),
         netloc: "example.com".to_string(),
         _path: "items".to_string(),
@@ -69,16 +69,16 @@ pub fn main() {
     let Position (x, y, z) = Position(-199.036, 75.0000, -2376.8457);
     println!("XYZ: {} / {} / {}", x, y, z);
 
-    let username = "admin";
-    let password = Password("password".to_string());
+    let username: &str = "admin";
+    let password: Password = Password("password".to_string());
     println!("username: {}", username);
     println!("password: {}", password);
 
-    let array_1 = vec![1, 2, 3, 4, 5];
-    let array_2 = vec![5, 6, 7, 8, 9];
+    let array_1: Vec<i32> = vec![1, 2, 3, 4, 5];
+    let array_2: Vec<i32> = vec![5, 6, 7, 8, 9];
 
-    let instance_1 = MyCalc { data: array_1 };
-    let mut instance_2 = MyCalc { data: array_2 };
+    let instance_1: MyCalc = MyCalc { data: array_1 };
+    let mut instance_2: MyCalc = MyCalc { data: array_2 };
     println!("The average for array_1 is {}", instance_1.average());
     println!("The median for array_2 is {}", instance_2.median());
 }

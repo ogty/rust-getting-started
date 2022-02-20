@@ -6,12 +6,12 @@ pub fn average(numbers: &[i32]) -> f32 {
 
 pub fn median(numbers: &mut [i32]) -> i32 {
     numbers.sort();
-    let mid = numbers.len() / 2;
+    let mid: usize = numbers.len() / 2;
     numbers[mid]
 }
 
 pub fn mode(numbers: &[i32]) -> i32 {
-    let mut occurrences = HashMap::new();
+    let mut occurrences: HashMap<i32, i32> = HashMap::new();
 
     for &value in numbers {
         *occurrences.entry(value).or_insert(0) += 1;

@@ -30,14 +30,14 @@ impl Abb<&str> for AbbImpl {
 }
 
 pub fn abb<T>(data:T) -> String where AbbImpl:Abb<T> {
-    let month_word = vec![
+    let month_word: Vec<String> = vec![
         String::from("Jan"), String::from("Feb"), String::from("Mar"),
         String::from("Apr"), String::from("May"), String::from("Jun"),
         String::from("Jul"), String::from("Aug"), String::from("Sep"),
         String::from("Oct"), String::from("Nov"), String::from("Dec")
     ];
-    let month_num = (1..13).collect::<Vec<i32>>();
+    let month_num: Vec<i32> = (1..13).collect::<Vec<i32>>();
 
-    let mut abb = AbbImpl{ month_word, month_num };
+    let mut abb: AbbImpl = AbbImpl{ month_word, month_num };
     return Abb::abb(&mut abb, data);
 }

@@ -1,5 +1,5 @@
 pub fn flow() {
-    let age = 20;
+    let age: i32 = 20;
     
     if age > 76 {
         println!("Old age");
@@ -13,11 +13,11 @@ pub fn flow() {
         println!("Childhood");
     }
 
-    let split_word = if cfg!(target_os = "windows") { "\\" } else { "/" };
+    let split_word: &str = if cfg!(target_os = "windows") { "\\" } else { "/" };
     println!("{}", split_word);
 
-    let mut count = 0;
-    let result = loop {
+    let mut count: i32 = 0;
+    let result: i32 = loop {
         count += 1;
         if count == 5 {
             break count
@@ -25,13 +25,13 @@ pub fn flow() {
     };
     println!("{}", result);
 
-    let mut num = 3;
+    let mut num: i32 = 3;
     while num == 0 {
         println!("{}", num);
         num -= 1;
     };
 
-    let array = [1, 2, 3, 4, 5];
+    let array: [i32; 5] = [1, 2, 3, 4, 5];
     for i in array.iter() {
         println!("{}", i);
     }

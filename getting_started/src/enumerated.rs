@@ -1,5 +1,5 @@
 pub fn main() {
-    let m = Message::Move{ x: 0, y: 0 };
+    let m: Message = Message::Move{ x: 0, y: 0 };
     m.call();
     Message::Move{ x: 1, y: 1 }.call();
     Message::Quit.call();

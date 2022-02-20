@@ -32,10 +32,10 @@ impl Default for ScheduleGenerator {
 
 impl Components for ScheduleGenerator {
     fn generate(&mut self) {
-        let hours = (self.start..self.end).collect::<Vec<i32>>();
+        let hours: Vec<i32> = (self.start..self.end).collect::<Vec<i32>>();
         self.hours = hours;
 
-        let mut time_schedules = Vec::new();
+        let mut time_schedules: Vec<String> = Vec::new();
         for hour in &self.hours {
             for minute in (0..60).step_by(self.step) {
                 if self.fill {
@@ -48,7 +48,7 @@ impl Components for ScheduleGenerator {
         }
 
         if self.include {
-            let hours_end = self.hours[self.hours.len() - 1];
+            let hours_end: i32 = self.hours[self.hours.len() - 1];
             if hours_end != 23 {
                 if self.fill {
                     time_schedules.push(format!("{:?}{}00", hours_end + 1, self.delimiter));
@@ -62,14 +62,14 @@ impl Components for ScheduleGenerator {
     }
 
     fn delete(&mut self, del_schedules: Vec<String>) {
-        let mut tmp = Vec::new();
+        let mut tmp: Vec<String> = Vec::new();
 
         for time_schedule in &self.time_schedules {
             tmp.push(format!("{}", time_schedule));
         }
 
         for del_schedule in del_schedules {
-            let index = tmp.iter().position(|x| *x == del_schedule).unwrap();
+            let index: usize = tmp.iter().position(|x| *x == del_schedule).unwrap();
             tmp.remove(index);
         }
         self.time_schedules = Vec::new();

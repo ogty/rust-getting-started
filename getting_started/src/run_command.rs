@@ -1,7 +1,7 @@
-use std::process::Command;
+use std::process::{Command, Output};
 
 pub fn run() {
-    let output = Command::new("julia")
+    let output: Output = Command::new("julia")
         .args(["-e", "using Pkg; Pkg.status();"])
         .output()
         .expect("failed to execute process");

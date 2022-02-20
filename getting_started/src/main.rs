@@ -12,6 +12,7 @@ mod plot;
 mod schedule_generator;
 use crate::schedule_generator::{Components, ScheduleGenerator};
 mod run_command;
+mod whoami;
 
 fn main() {
     // types
@@ -65,6 +66,11 @@ fn main() {
 
     // run command
     run_command::run();
+
+    // whoami
+    let iam = whoami::whoami();
+    println!("Computer: {}", iam[0]);
+    println!("Username: {}", iam[1]);
 }
 
 static MAXIM: &str =

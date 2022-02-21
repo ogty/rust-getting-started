@@ -15,6 +15,7 @@ mod run_command;
 mod whoami;
 mod default_arguments;
 use crate::default_arguments::{Greeting, MessageTemplates};
+mod macros;
 
 fn main() {
     // types
@@ -87,6 +88,9 @@ fn main() {
 
     let mut greeter3 = Greeting{ name: "Alice", ..Default::default() };
     greeter3.general_message();
+
+    // macro
+    macros::main();
 }
 
 static MAXIM: &str =

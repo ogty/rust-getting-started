@@ -13,6 +13,8 @@ mod schedule_generator;
 use crate::schedule_generator::{Components, ScheduleGenerator};
 mod run_command;
 mod whoami;
+mod default_arguments;
+use crate::default_arguments::{Greeting, MessageTemplates};
 
 fn main() {
     // types
@@ -71,6 +73,13 @@ fn main() {
     let iam = whoami::whoami();
     println!("My name is {}", iam); 
     println!("{}", whoami::desktop());
+
+    // default argument
+    let mut greeting = Greeting::default();
+    greeting.general_message();
+
+    greeting.name = "John";
+    greeting.general_message();
 }
 
 static MAXIM: &str =

@@ -75,11 +75,18 @@ fn main() {
     println!("{}", whoami::desktop());
 
     // default argument
-    let mut greeting = Greeting::default();
-    greeting.general_message();
+    let mut greeter = Greeting::default();
+    greeter.general_message();
 
-    greeting.name = "John";
-    greeting.general_message();
+    greeter.name = "John";
+    greeter.general_message();
+
+    let mut greeter2 = Greeting{ ..Default::default() };
+    greeter2.name = "Bob";
+    greeter2.general_message();
+
+    let mut greeter3 = Greeting{ name: "Alice", ..Default::default() };
+    greeter3.general_message();
 }
 
 static MAXIM: &str =

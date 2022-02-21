@@ -6,7 +6,7 @@ macro_rules! myvec {
         <[_]>::into_vec(Box::new([ $( $x ),* ]))
     };
     ( $( $x:expr ), +, ) => {
-        vec![ $( $x ),* ]
+        myvec![ $( $x ),* ]
     };
 }
 

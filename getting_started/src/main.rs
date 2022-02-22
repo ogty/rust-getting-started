@@ -16,6 +16,8 @@ mod whoami;
 mod default_arguments;
 use crate::default_arguments::{Greeting, MessageTemplates};
 mod macros;
+mod closure;
+mod regex;
 
 fn main() {
     // types
@@ -91,6 +93,12 @@ fn main() {
 
     // macro
     macros::main();
+
+    // closure
+    closure::main();
+
+    // regex
+    regex::main();
 }
 
 static MAXIM: &str =

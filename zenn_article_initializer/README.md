@@ -35,3 +35,11 @@ topics: [one, two, three]
 published: false
 ---
 ```
+
+---
+
+https://github.com/ogty/article-continuous-integration
+
+Work with article-coutinuous-integration.
+We want to make it possible to create a code-based system from an article-based system.
+I think it is very important to continuously update the information contained in the article content.

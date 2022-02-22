@@ -38,8 +38,6 @@ published: false
 ---
 ```
 
----
-
 https://github.com/ogty/article-continuous-integration
 
 Work with article-coutinuous-integration.

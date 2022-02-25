@@ -67,12 +67,14 @@ impl Initializer for ArticleInitializer {
 
 fn main() {
     let id: Uuid = Uuid::new_v4();
-    let path: String = format!("./articles/{}.md", id);
+    let article_path: String = format!("./articles/{}.md", &id);
+    let article_script_path: String = format!("./articles/_{}.md", &id);
     let mut args: Vec<String> = env::args().collect();
     args.push(String::from(""));
 
     let mut initializer: ArticleInitializer = ArticleInitializer{ ..Default::default() };
     initializer.title = args[1].to_string();
     initializer.topics = (&args[2..]).to_vec();
-    initializer.write(&path);
+    initializer.write(&article_path);
+    initializer.write(&article_script_path);
 }
